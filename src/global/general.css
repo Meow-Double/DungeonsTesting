@@ -1,0 +1,10 @@
+body {
+  background-color: var(--section-color);
+}
+
+.container {
+  max-width: 540px;
+  width: 100%;
+  padding-inline: 15px;
+  margin-inline: 15px;
+}
