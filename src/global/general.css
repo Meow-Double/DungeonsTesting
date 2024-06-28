@@ -6,5 +6,12 @@ body {
   max-width: 540px;
   width: 100%;
   padding-inline: 15px;
-  margin-inline: 15px;
+  margin-inline: auto;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(240px, 370px) auto;
+  gap: 20px;
+  align-items: center;
 }
