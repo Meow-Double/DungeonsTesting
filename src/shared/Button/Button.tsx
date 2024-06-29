@@ -8,6 +8,10 @@ interface ButtonProps extends React.ComponentProps<'button'> {
   variant: ButtonVariant;
 }
 
-export const Button = ({ children, variant, className }: ButtonProps) => {
-  return <button className={clsx(styles.btn, styles[variant], className)}>{children}</button>;
+export const Button = ({ children, variant, className, onClick }: ButtonProps) => {
+  return (
+    <button className={clsx(styles.btn, styles[variant], className)} onClick={onClick}>
+      {children}
+    </button>
+  );
 };

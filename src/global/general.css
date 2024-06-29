@@ -3,15 +3,8 @@ body {
 }
 
 .container {
-  max-width: 540px;
   width: 100%;
-  padding-inline: 15px;
+  max-width: 570px;
   margin-inline: auto;
-}
-
-.inner {
-  display: grid;
-  grid-template-columns: minmax(240px, 370px) auto;
-  gap: 20px;
-  align-items: center;
+  padding-inline: 15px;
 }

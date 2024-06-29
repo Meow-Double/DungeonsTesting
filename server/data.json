@@ -1,0 +1,74 @@
+[
+  {
+    "id": 0,
+    "title": "Драконье логово",
+    "difficulty": 3,
+    "time": "3:45",
+    "price": 5,
+    "award": 70,
+    "img": "http://localhost:5173/server/images/1.jpg"
+  },
+  {
+    "id": 1,
+    "title": "Пещеры Канго",
+    "difficulty": 5,
+    "time": "7:20",
+    "price": 10,
+    "award": 90,
+    "img": "http://localhost:5173/server/images/2.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Ясная поляна",
+    "difficulty": 1,
+    "time": "2:30",
+    "price": 1,
+    "award": 10,
+    "img": "http://localhost:5173/server/images/3.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Гроты Нептуна",
+    "difficulty": 3,
+    "time": "4:00",
+    "price": 6,
+    "award": 40,
+    "img": "http://localhost:5173/server/images/4.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Поющие водопады",
+    "difficulty": 2,
+    "time": "3:00",
+    "price": 4,
+    "award": 40,
+    "img": "http://localhost:5173/server/images/5.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Оскверненный грот",
+    "difficulty": 4,
+    "time": "5:30",
+    "price": 8,
+    "award": 90,
+    "img": "http://localhost:5173/server/images/6.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Огненные недра",
+    "difficulty": 2,
+    "time": "4:20",
+    "price": 3,
+    "award": 50,
+    "img": "http://localhost:5173/server/images/7.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Дерево мудрости",
+    "difficulty": 5,
+    "time": "6:10",
+    "price": 12,
+    "award": 100,
+    "img": "http://localhost:5173/server/images/8.jpg"
+  }
+]

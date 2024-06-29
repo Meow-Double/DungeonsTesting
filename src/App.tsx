@@ -1,12 +1,21 @@
-import { Button, Search } from '@/shared';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { DungeonPage, HomePage } from './pages';
+import { ROUTES } from './ROUTES';
+import { Layout } from './components';
 
 export const App = () => {
   return (
-    <div className='container'>
-      <div className='inner'>
-        <Search placeholder='Поиск ...' />
-        <Button variant='primary'>Найти</Button>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path={ROUTES.HOME} element={<Layout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+        <Route path={ROUTES.DUNGEON} element={<Layout />}>
+          <Route index element={<DungeonPage />} />
+          <Route index path=":id" element={<DungeonPage />} />
+        </Route>
+       
+      </Routes>
+    </BrowserRouter>
   );
 };

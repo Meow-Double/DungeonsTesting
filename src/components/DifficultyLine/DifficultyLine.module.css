@@ -1,0 +1,17 @@
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star {
+  width: 16px;
+  height: 16px;
+}
+
+.active {
+
+  rect {
+    fill: var(--primary-color);
+  }
+}
