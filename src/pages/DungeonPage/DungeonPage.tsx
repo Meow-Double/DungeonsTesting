@@ -7,7 +7,8 @@ import { getDungeonsId } from '@/api/requests';
 import MoneySvg from '@/assets/img/Money.svg';
 
 export const DungeonPage = () => {
-  const [data, setData] = useState<DungeonType>();
+  const [data, setData] = useState<DungeonTypeItems>();
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -18,7 +19,7 @@ export const DungeonPage = () => {
       }
     }).then((res) => setData(res.data));
   }, [id]);
-  
+
   return (
     <div className={styles.inner}>
       <img className={styles.img} src={data?.img} alt='dungeon' />

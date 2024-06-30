@@ -9,4 +9,4 @@ export type GetDungeonsConfig = AxiosRequestConfig;
 
 export const getDungeons = async ({ config }: GetDungeonsConfig) =>
   // const queryUrl = params ?? new URLSearchParams(params).toString();
-  api.get<DungeonTypeList>(`/dungeons`, config);
+  api.get<DungeonType>(`/dungeons`, config);

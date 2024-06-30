@@ -7,7 +7,7 @@ interface CardProps {
   title: string;
   img: string;
   difficulty: number;
-  id: string;
+  id: number;
 }
 
 export const Card = ({ title, img, difficulty, id }: CardProps) => {

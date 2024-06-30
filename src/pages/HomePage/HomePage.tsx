@@ -7,9 +7,14 @@ import { getDungeons } from '@/api/requests';
 export const HomePage = () => {
   const [value, setValue] = useState<string>('');
   const [limit, setLimit] = useState<number>(3);
-  const [items, setItems] = useState<DungeonTypeList>([]);
+  const [items, setItems] = useState<DungeonTypeItemsList>([]);
+  const [maxLength, setMaxLength] = useState(0);
+
   useEffect(() => {
-    getDungeons({ config: { params: { limit: limit } } }).then((res) => setItems(res.data));
+    getDungeons({ config: { params: { title: value, limit: limit } } }).then((res) => {
+      setItems(res.data.items);
+      setMaxLength(res.data.maxLength);
+    });
   }, [limit]);
 
   const changeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +22,17 @@ export const HomePage = () => {
   };
 
   const onClickFind = () => {
-    getDungeons({ config: { params: { title: value } } }).then((res) => setItems(res.data));
+    getDungeons({ config: { params: { title: value, limit: limit } } }).then((res) => {
+      setItems(res.data.items);
+      if (value === '') {
+        setMaxLength(res.data.maxLength);
+      } else {
+        setMaxLength(0);
+      }
+    });
   };
+
+  const isRenderButton = limit < Number(maxLength) ? (items.length ? true : false) : false;
 
   return (
     <>
@@ -35,9 +49,11 @@ export const HomePage = () => {
             <Card key={item.id} {...item} />
           ))}
         </ul>
-        <Button onClick={() => setLimit((prev) => prev + 3)} variant='primary'>
-          Показать больше
-        </Button>
+        {isRenderButton && (
+          <Button onClick={() => setLimit((prev) => prev + 3)} variant='primary'>
+            Показать больше
+          </Button>
+        )}
       </div>
     </>
   );

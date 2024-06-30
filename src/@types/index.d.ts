@@ -1,4 +1,4 @@
-interface DungeonType {
+interface DungeonTypeItems {
   id: number;
   title: string;
   difficulty: number;
@@ -8,4 +8,9 @@ interface DungeonType {
   img: string;
 }
 
-type DungeonTypeList = Array<Dungeon>;
+interface DungeonType {
+  items: DungeonTypeItemsList;
+  maxLength: number;
+}
+
+type DungeonTypeItemsList = Array<DungeonTypeItems>;

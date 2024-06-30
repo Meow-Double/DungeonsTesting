@@ -20,10 +20,10 @@ app.get('/dungeons', (req, res) => {
   }
 
   if (limit) {
-    filteredDungeons = Data.filter((_, index) => index < Number(limit));
+    filteredDungeons = filteredDungeons.filter((_, index) => index < Number(limit));
   }
 
-  res.json(filteredDungeons);
+  res.json({ items: filteredDungeons, maxLength: Data.length });
 });
 
 app.get('/dungeons/:id', (req, res) => {

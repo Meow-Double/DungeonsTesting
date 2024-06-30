@@ -7,4 +7,4 @@ type GetDungeonsIdParams = {
 export type GetDungeonsIdConfig = AxiosRequestConfig<GetDungeonsIdParams>;
 
 export const getDungeonsId = async ({ params, config }: GetDungeonsIdConfig) =>
-  api.get<DungeonType>(`/dungeons/${params.id}`, config);
+  api.get<DungeonTypeItems>(`/dungeons/${params.id}`, config);
