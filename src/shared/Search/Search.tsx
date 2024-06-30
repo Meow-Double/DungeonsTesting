@@ -1,16 +1,26 @@
 import SearchSbg from '@/assets/img/Search.svg';
 import styles from './Search.module.css';
 import clsx from 'clsx';
-import { useRef } from 'react';
+import { ChangeEvent, useRef } from 'react';
 
-type SearchProps = React.ComponentProps<'input'>;
+interface SearchProps extends React.ComponentProps<'input'> {
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
 
-export const Search = ({ className, ...props }: SearchProps) => {
+export const Search = ({ className, value, onChange, ...props }: SearchProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className={clsx(styles.search, className)}>
-      <input className={styles.input} type='text' ref={inputRef} {...props} />
+      <input
+        value={value}
+        className={styles.input}
+        type='text'
+        ref={inputRef}
+        {...props}
+        onChange={(e) => onChange(e)}
+      />
       <img
         className={styles.img}
         src={SearchSbg}

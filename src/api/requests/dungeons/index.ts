@@ -1,6 +1,12 @@
 import { api } from '@/api/instance';
 
+// interface GetDungeonsParams {
+//   title?: string;
+//   limit?: number;
+// }
+
 export type GetDungeonsConfig = AxiosRequestConfig;
 
 export const getDungeons = async ({ config }: GetDungeonsConfig) =>
-  api.get<DungeonTypeList>('/dungeons', config);
+  // const queryUrl = params ?? new URLSearchParams(params).toString();
+  api.get<DungeonTypeList>(`/dungeons`, config);

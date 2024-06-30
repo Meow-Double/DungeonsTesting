@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getDungeonsId } from '@/api/requests';
 import MoneySvg from '@/assets/img/Money.svg';
+
 export const DungeonPage = () => {
   const [data, setData] = useState<DungeonType>();
   const navigate = useNavigate();
@@ -17,10 +18,11 @@ export const DungeonPage = () => {
       }
     }).then((res) => setData(res.data));
   }, [id]);
+  
   return (
-    <div>
-      <img src={data?.img} alt='dungeon' />
-      <h2>{data?.title}</h2>
+    <div className={styles.inner}>
+      <img className={styles.img} src={data?.img} alt='dungeon' />
+      <h2 className={styles.title}>{data?.title}</h2>
       <ul className={styles.list}>
         <li className={styles.item}>
           <h3 className={styles.desc_title}>Сложность</h3>
@@ -32,7 +34,7 @@ export const DungeonPage = () => {
         </li>
         <li className={styles.item}>
           <h3 className={styles.desc_title}>Стоимость:</h3>
-          <div>
+          <div className={styles.money_block}>
             <span>{data?.price}</span>
             <img src={MoneySvg} alt='money' />
           </div>
