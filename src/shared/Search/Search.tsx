@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { ChangeEvent, useRef } from 'react';
 
 interface SearchProps extends React.ComponentProps<'input'> {
-  value: string;
+  value?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 

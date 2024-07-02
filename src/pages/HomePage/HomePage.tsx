@@ -1,8 +1,9 @@
 import { Card } from '@/components';
 import { Button, Search } from '@/shared';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import styles from './HomePage.module.css';
 import { getDungeons } from '@/api/requests';
+import { debounce } from '@/utils/debounce';
 
 export const HomePage = () => {
   const [value, setValue] = useState<string>('');
@@ -15,22 +16,18 @@ export const HomePage = () => {
       setItems(res.data.items);
       setMaxLength(res.data.maxLength);
     });
-  }, [limit]);
+  }, [limit, value]);
 
   const changeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    updateSearchValue(e.target.value);
   };
 
-  const onClickFind = () => {
-    getDungeons({ config: { params: { title: value, limit: limit } } }).then((res) => {
-      setItems(res.data.items);
-      if (value === '') {
-        setMaxLength(res.data.maxLength);
-      } else {
-        setMaxLength(0);
-      }
-    });
-  };
+  const updateSearchValue = useCallback(
+    debounce((value: string) => {
+      setValue(value);
+    }, 600),
+    []
+  );
 
   const isRenderButton = limit < Number(maxLength) ? (items.length ? true : false) : false;
 
@@ -39,10 +36,7 @@ export const HomePage = () => {
       <div className={styles.wrapper}>
         <h1 className={styles.title}>Найди нужное тебе подземелье!</h1>
         <div className={styles.search_block}>
-          <Search placeholder='Поиск ...' value={value} onChange={changeInputValue} />
-          <Button variant='primary' onClick={onClickFind}>
-            Найти
-          </Button>
+          <Search placeholder='Поиск ...' onChange={changeInputValue} />
         </div>
         <ul className={styles.list}>
           {items.map((item) => (

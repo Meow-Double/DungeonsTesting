@@ -1,5 +1,4 @@
 import { fileURLToPath } from 'url';
-import Data from './data.json' with { type: 'json' };
 import { dirname, join } from 'path';
 import fs from 'fs';
 
@@ -11,20 +10,23 @@ const dbFileDungeons = join(__dirname, '..', 'data.json');
 export const getDungeons = async (req, res) => {
   try {
     const data = await fs.promises.readFile(dbFileDungeons, 'utf-8');
+    const dungeons = JSON.parse(data);
 
-    let filteredDungeons = [...data];
+    let filteredDungeons = [...dungeons];
     const { title, limit } = req.query;
 
     if (title) {
       const keyword = title.toLowerCase();
-      filteredDungeons = data.filter((dungeon) => dungeon.title.toLowerCase().includes(keyword));
+      filteredDungeons = dungeons.filter((dungeon) =>
+        dungeon.title.toLowerCase().includes(keyword)
+      );
     }
 
     if (limit) {
       filteredDungeons = filteredDungeons.filter((_, index) => index < Number(limit));
     }
 
-    res.json({ items: filteredDungeons, maxLength: Data.length });
+    res.json({ items: filteredDungeons, maxLength: dungeons.length });
   } catch (error) {
     res.status(500).json({ error: error.message || 'Dungeons is not found' });
   }
@@ -33,13 +35,15 @@ export const getDungeons = async (req, res) => {
 export const getDungeon = async (req, res) => {
   try {
     const data = await fs.promises.readFile(dbFileDungeons, 'utf-8');
+    const dungeon = JSON.parse(data);
 
     const id = Number(req.params.id);
-    const dungeon = data.find((dungeon) => dungeon.id === id);
-    if (!dungeon) {
+    const currentDungeon = dungeon.find((dungeon) => dungeon.id === id);
+
+    if (!currentDungeon) {
       res.status(404).json({ error: 'Dungeon nod found' });
     }
-    res.json(dungeon);
+    res.json(currentDungeon);
   } catch (error) {
     res.status(500).json({ error: error.message || 'Dungeon is not found' });
   }

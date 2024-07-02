@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-import { getDungeon, getDungeons } from './controllers/dungeons';
+import { getDungeon, getDungeons } from './controllers/dungeons.js';
 
 const PORT = 8080;
 
